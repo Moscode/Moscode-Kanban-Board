@@ -1,11 +1,13 @@
 export default class kanbanApi {
     static getItems(columnId) {
-        const column = read().find(
-            column => column.id == columnId);
-        if (!column){
-            return "Nothing is stored yet";
-        }
+        const column = read().find(column => column.id == columnId);
+            if (!column) {
+                return [];
+            }
         return column.items;
+    }
+    static insertItem(columnId, data) {
+        
     }
 }
 
