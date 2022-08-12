@@ -1,0 +1,15 @@
+.kanban {
+    display: flex;
+    background-color: rgba(15, 15, 15, 0.774);
+    color: white;
+}
+
+.kanban__droparea{
+    height: 10px;
+    transition: background 0.15s, height 0.15s;
+}
+
+.kanban__droparea--active{
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.25);
+}
