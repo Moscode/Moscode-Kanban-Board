@@ -6,8 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #000;
-  display: flex;
-  justify-content: center;
   height: 100vh;
 }
 

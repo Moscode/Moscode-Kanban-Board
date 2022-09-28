@@ -1,3 +1,8 @@
+.signup-body{
+  display: flex;
+  justify-content: center;
+}
+
 .signup-form {
     background-color: #15172b;
     border-radius: 20px;
@@ -21,12 +26,9 @@
     color: #A9A9A9;
   }
 
-  input[type=text],
-  input[type=email],
-  input[type=password],
   select {
     width: 90%;
-    margin: 10px 0;
+    margin: 40px 0;
     padding: 10px;
     outline: none;
     background-color: #303245;
@@ -34,7 +36,7 @@
     border-radius: 5px;
     color: #eee;
     font-size: 18px;
-    height: 100%;
+    height: 9%;
     outline: 0;
   }
 
@@ -63,4 +65,11 @@
 
   button:active {
     background-color: #06b;
+  }
+
+  .errormessage {
+    color: #fff;
+    width: 50%;
+    overflow-wrap: break-word;
+    margin-bottom: 4em;
   }

@@ -1,0 +1,19 @@
+.home-body{
+    display: flex;
+    justify-content: center;
+    background-color: #303245;
+    height: 100vh;
+}
+
+.homepage{
+    margin: auto 0;
+}
+h1 {
+    color: #fff;
+}
+h4 {
+   display: inline;
+   color: #fff;
+   margin: 0 15%;
+   text-decoration: none;
+}

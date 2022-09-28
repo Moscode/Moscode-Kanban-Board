@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './sign-in.css';
 
 const SignIn = () => {
   return (
+    <div className="signin-body">
     <div className='sign-in'>
         <form className='signin-form'>
             <h1>Have an account already</h1>
@@ -13,9 +15,11 @@ const SignIn = () => {
             <input name="password" type="password" placeholder='Eg.*********'/>
             <label for="project">Project Name</label>
             <input name="text" type="text" placeholder='Eg.ChatScrum'/>
-            <button>Sign In</button>
+            <Link to="/scrumboard"><button>Sign In</button></Link>
         </form>
-        <p className='sign-up-link'>Don't have an account? Sign up</p>
+        <p className='sign-up-link'>Don't have an account? <Link to="/signup" style={{color:'#fff'}}>Sign up</Link></p>
+        <p><Link to="/" style={{color:'#fff', textDecoration: 'none'}}>Back to Home</Link></p>
+    </div>
     </div>
   )
 }
