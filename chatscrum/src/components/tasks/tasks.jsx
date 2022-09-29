@@ -1,17 +1,20 @@
 import React from 'react'
 import taskLists from '../../static/tasks';
+import '../scrumboard/scrumboard.css';
 
-function tasks() {
+function Tasks() {
   return (
     <div className='tasker'>
         <div className="container">
           <div className="weekly box">
             <h4 className="task">Weekly Task</h4>
-            {taskLists.map((task, index) => (
-                <p className='task' key={task.id}>
-                    {task.item}
+            {taskLists.map(({id, item}, index) => {
+              return (
+              <p className='tasklist' key={id}>
+                    {item}
                 </p>
-            ))}
+            )
+          })}
           </div>
           <div className="daily box">
             <h4 className="task">Daily Task</h4>
@@ -21,4 +24,4 @@ function tasks() {
   )
 }
 
-export default tasks;
+export default Tasks;
