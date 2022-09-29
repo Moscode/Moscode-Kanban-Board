@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Data from "../../static/data";
 import './scrumboard.css';
+import tasks from "../tasks/tasks";
 
 class Scrumboard extends Component {
   constructor(){
@@ -51,16 +52,7 @@ class Scrumboard extends Component {
         </nav>
         <div className="mainboard">
         <p>Hello {Data.fullname}, welcome to your scrumboard</p>
-
-        <div className="container">
-          <div className="weekly box">
-            <h4 className="task">Weekly Task</h4>
-            <p style={{color: "#000"}}>{this.state.task}</p>
-          </div>
-          <div className="daily box">
-            <h4 className="task">Daily Task</h4>
-          </div>
-        </div>
+        <tasks />
         <div id="modal" className={this.state.isOpen ? "show" : "hidden"}>
           <div className="header">
             <h3> Add a new task</h3>
