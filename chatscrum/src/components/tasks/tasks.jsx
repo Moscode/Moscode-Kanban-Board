@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import taskLists from '../../static/tasks';
 import '../scrumboard/scrumboard.css';
 
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 
 function Tasks() {
+
+  const [taskRoll, updateTaskRoll] = useState(taskLists)
+
+  const handleOnDragEnd = result => {
+    
+  }
+
   return (
     <div className='tasker'>
-    <DragDropContext>
+    <DragDropContext onDragEnd={}>
         <div className="container">
           <Droppable droppableId="tasket">
             {(provided)=>(
               <div className="weekly box" {...provided.droppableProps} ref={provided.innerRef}>
               <h4 className="task">Weekly Task</h4>
-              {taskLists.map(({id, item}, index) => {
+              {taskRoll.map(({id, item}, index) => {
                 return (
                   <Draggable key={id} draggableId={id} index={index}>
                     {(provided) => (
@@ -21,19 +28,21 @@ function Tasks() {
                          {item}
                         </p>
                     )}
-                    {provided.placeholder}
                   </Draggable>
               )
             })}
+            {provided.placeholder}
             </div>
             )}
+            
           </Droppable>
 
          <Droppable id="tasketer">
           {(provided) => (
             <div className="daily box" {...provided.droppableProps} ref={provided.innerRef}>
             <h4 className="task">Daily Task</h4>
-          </div>
+            {provided.placeholder}
+            </div>
           )}
          </Droppable>
         </div>
