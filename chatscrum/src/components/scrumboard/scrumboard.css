@@ -121,8 +121,9 @@ form .input-task {
     transform: translateX(-50%);
 }
 
-.tasklist {
-    color: "#000";
-    border: "1px solid #000";
-    width: "#15172b"
+.tasklist{
+    border: 1px solid #15172b;
+    width: 80%;
+    margin: 7% auto;
+    padding: 2%;
 }
