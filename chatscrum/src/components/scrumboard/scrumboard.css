@@ -138,10 +138,8 @@ form .input-task {
 .tasker {
     background-color: #303245;
     color: #ffffff;
-    border: 1px solid #15172b;
-    color: #000;
+    border: 5px solid #15172b;
     width: 80%;
     margin: 7% auto;
-    padding: 2%;
     cursor: pointer;
 }

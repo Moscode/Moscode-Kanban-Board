@@ -1,28 +1,19 @@
-import React, { useState } from 'react'
-import taskLists from '../../static/tasks';
+import React, { useState } from 'react';
 import '../scrumboard/scrumboard.css';
 
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd'
 
-function Tasks() {
+function Tasks({data, deleteTask}) {
 
-  const [taskRoll, updateTaskRoll] = useState(taskLists)
+  const [taskRoll, updateTaskRoll] = useState(data)
 
   const handleOnDragEnd = result => {
     if (!result.destination) return;
-    if (result.source.droppableId !== result.destination.droppableId){
-      const sourceColumn = result.source.droppableId;
-      const destColumn = result.destination.droppableId;
-      const [removeItem] = items.splice(result.source.index, 1)
-      items.splice(result.destination.index, 0, reorderedItem)
-      updateTaskRoll(items)
-    }
-    else{
-      const items = Array.from(taskRoll);
-      const [reorderedItem] = items.splice(result.source.index, 1)
-      items.splice(result.destination.index, 0, reorderedItem)
-      updateTaskRoll(items)
-    }
+
+    const tasks = Array.from(taskRoll);
+    const [reorderedItem] = tasks.splice(result.source.index, 1)
+    tasks.splice(result.destination.index, 0, reorderedItem)
+    updateTaskRoll(tasks)
   }
 
   return (
@@ -30,15 +21,15 @@ function Tasks() {
     <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="container">
           <Droppable droppableId="tasket">
-            {(provided, snapshot)=>(
-              <div {...provided.droppableProps} ref={provided.innerRef} className={snapshot.isDraggingOver ? "droppablearea": "weekly box"}>
+            {(provided)=>(
+              <div {...provided.droppableProps} ref={provided.innerRef} className="weekly box">
               <h4 className="task">Weekly Task</h4>
-              {taskRoll.map(({id, item}, index) => {
+              {data.map(({id, content}, index) => {
                 return (
                   <Draggable key={id} draggableId={id} index={index}>
                     {(provided, snapshot) => (
-                         <p style={{color: "black"}} key={id} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className={snapshot.isDragging ?  "tasker": "tasklist"}>
-                         {item}
+                         <p style={{color: "black"}} key={id} onClick={() => deleteTask(id)} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} className={snapshot.isDragging ?  "tasker": "tasklist"}>
+                         {content}
                         </p>
                     )}
                   </Draggable>

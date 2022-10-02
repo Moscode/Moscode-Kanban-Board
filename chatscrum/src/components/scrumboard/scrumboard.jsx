@@ -2,40 +2,33 @@ import React, { Component } from "react";
 import Data from "../../static/data";
 import './scrumboard.css';
 import Tasks from "../tasks/tasks"
+import AddTask from "./addTask";
 
 class Scrumboard extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state = {
       data: Data,
       isOpen: false,
-      task: null
+      tasks: []
     }
   }
 
-  openModal = () => {
+  addTask = (task) => {
+    task.id = Math.random().toString(36).slice(2, 9)
+    const tasks = [...this.state.tasks, task]
     this.setState({
-      isOpen: true
+      tasks
     })
   }
 
-  closeModal = () => {
+  deleteTask = (id) => {
+    const tasks = this.state.tasks.filter(task => (
+      task.id !==  id
+    ))
     this.setState({
-      isOpen: false
-    })
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      task: e.target.value
-    })
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({
-      isOpen: false
+      tasks
     })
   }
 
@@ -52,18 +45,8 @@ class Scrumboard extends Component {
         </nav>
         <div className="mainboard">
         <p>Hello {Data.fullname}, welcome to your scrumboard</p>
-        <Tasks />
-        <div id="modal" className={this.state.isOpen ? "show" : "hidden"}>
-          <div className="header">
-            <h3> Add a new task</h3>
-            <h3 id="close" style={{color:"#000", cursor: "pointer"}} onClick={() => this.closeModal()}>X</h3>
-          </div>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" className="input-task" placeholder="INPUT YOUR TASK" onChange={this.handleChange}/>
-            <button className="popup-btn">CONFIRM</button>
-          </form>
-        </div>
-        <button className="add" onClick={() => this.openModal()}>ADD TASK</button>
+        <Tasks data={this.state.tasks} deleteTask={this.deleteTask}/>
+        <AddTask addTask={this.addTask}/>
         </div>
       </div>
     )
