@@ -3,6 +3,7 @@ import Data from "../../static/data";
 import './scrumboard.css';
 import Tasks from "../tasks/tasks"
 import AddTask from "./addTask";
+import Users from "../users/users";
 
 class Scrumboard extends Component {
   constructor(props){
@@ -47,6 +48,7 @@ class Scrumboard extends Component {
         <p>Hello {Data.fullname}, welcome to your scrumboard</p>
         <Tasks data={this.state.tasks} deleteTask={this.deleteTask}/>
         <AddTask addTask={this.addTask}/>
+        <Users />
         </div>
       </div>
     )
